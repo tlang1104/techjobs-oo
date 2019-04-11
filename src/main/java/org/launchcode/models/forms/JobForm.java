@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class JobForm {
 
     @NotNull
-    @Size(min=1, message = "Name may not be empty")
+    @Size(min=1, message = "Do not leave blank")
     private String name;
 
     @NotNull
@@ -27,6 +27,16 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int positionTypeId;
+
+    @NotNull
+    private int coreCompetenciesId;
+
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -42,6 +52,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        locations = jobData.getLocations().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
 
     }
 
@@ -77,6 +90,14 @@ public class JobForm {
         this.locations = locations;
     }
 
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
     public ArrayList<CoreCompetency> getCoreCompetencies() {
         return coreCompetencies;
     }
@@ -85,11 +106,27 @@ public class JobForm {
         this.coreCompetencies = coreCompetencies;
     }
 
+    public int getCoreCompetenciesId() {
+        return coreCompetenciesId;
+    }
+
+    public void setCoreCompetenciesId(int coreCompetenciesId) {
+        this.coreCompetenciesId = coreCompetenciesId;
+    }
+
     public ArrayList<PositionType> getPositionTypes() {
         return positionTypes;
     }
 
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
     }
 }
